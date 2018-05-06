@@ -11,6 +11,7 @@ import com.revature.services.ItemService;
 
 @RestController
 @RequestMapping("/items")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ItemController {
 	
 	@Autowired

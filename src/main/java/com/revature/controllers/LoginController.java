@@ -9,6 +9,7 @@ import com.revature.services.*;
 
 @RestController
 @RequestMapping("/login")
+@CrossOrigin(origins = "http://localhost:4200")
 public class LoginController {
 	
 	@Autowired

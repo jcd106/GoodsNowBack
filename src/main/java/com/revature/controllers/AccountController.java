@@ -13,6 +13,7 @@ import com.revature.services.AccountService;
 
 @RestController
 @RequestMapping("/accounts")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AccountController {
 	
 	@Autowired

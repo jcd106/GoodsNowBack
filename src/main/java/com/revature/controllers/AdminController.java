@@ -13,6 +13,7 @@ import com.revature.services.AdminService;
 
 @RestController
 @RequestMapping("/admins")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AdminController {
 	
 	@Autowired
