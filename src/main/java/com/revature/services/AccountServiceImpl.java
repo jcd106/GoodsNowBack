@@ -49,7 +49,7 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public Account loginAccount(Account logAccount) {
-		String username = logAccount.getUsername();
+		String username = logAccount.getUsername().toLowerCase();
 		String password = logAccount.getPassword();
 		return accountRepo.findAccountByUsernameAndPassword(username, password);
 	}

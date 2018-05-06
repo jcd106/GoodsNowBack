@@ -34,11 +34,13 @@ public class RegisterController {
 			String aStr = mapper.writeValueAsString(on.get("Account"));
 			//System.out.println(aStr);
 			Account newAccount = mapper.readValue(aStr, Account.class);
+			newAccount.setUsername(newAccount.getUsername().toLowerCase());
 			newAccount.setRoleId(1);
 			//Account account = accountService.addAccount(newAccount);
 			String cStr = mapper.writeValueAsString(on.get("Customer"));
 			//System.out.println(cStr);
 			Customer newCustomer = mapper.readValue(cStr, Customer.class);
+			newCustomer.setEmail(newCustomer.getEmail().toLowerCase());
 			//newCustomer.setAccount(account);
 			Customer customer = customerService.addCustomer(newAccount, newCustomer);
 			if (customer != null) {
@@ -59,11 +61,13 @@ public class RegisterController {
 			String aStr = mapper.writeValueAsString(on.get("Account"));
 			//System.out.println(aStr);
 			Account newAccount = mapper.readValue(aStr, Account.class);
+			newAccount.setUsername(newAccount.getUsername().toLowerCase());
 			newAccount.setRoleId(2);
 			//Account account = accountService.addAccount(newAccount);
 			String sStr = mapper.writeValueAsString(on.get("Seller"));
 			//System.out.println(sStr);
 			Seller newSeller = mapper.readValue(sStr, Seller.class);
+			newSeller.setEmail(newSeller.getEmail().toLowerCase());
 			//newSeller.setAccount(account);
 			newSeller.setMoney(0);
 			Seller seller = sellerService.addSeller(newAccount, newSeller);
@@ -84,11 +88,13 @@ public class RegisterController {
 			String aStr = mapper.writeValueAsString(on.get("Account"));
 			//System.out.println(aStr);
 			Account newAccount = mapper.readValue(aStr, Account.class);
+			newAccount.setUsername(newAccount.getUsername().toLowerCase());
 			newAccount.setRoleId(3);
 			//Account account = accountService.addAccount(newAccount);
 			String adStr = mapper.writeValueAsString(on.get("Admin"));
 			//System.out.println(adStr);
 			Admin newAdmin = mapper.readValue(adStr, Admin.class);
+			newAdmin.setEmail(newAdmin.getEmail().toLowerCase());
 			//newAdmin.setAccount(account);
 			Admin admin = adminService.addAdmin(newAccount, newAdmin);
 			if (admin != null) {
