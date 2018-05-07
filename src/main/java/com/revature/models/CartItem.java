@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Component
 @Entity
 @Table(name="CART_ITEM")
@@ -49,6 +51,7 @@ public class CartItem {
 		this.quantity = quantity;
 	}
 	
+	@JsonIgnore
 	public Item getItem() {
 		return this.cartItemId.getItem();
 	}
@@ -57,6 +60,7 @@ public class CartItem {
 		this.cartItemId.setItem(item);
 	}
 	
+	@JsonIgnore
 	public Customer getCustomer() {
 		return this.cartItemId.getCustomer();
 	}

@@ -21,6 +21,7 @@ public class CartItemController {
 	public CartItem addCartItem(@RequestBody CartItem newCartItem) {
 		CartItem cartItem = cartItemService.addCartItem(newCartItem);
 		cartItem.getItem().setSeller(null);
+		cartItem.getCustomer().getAccount().setPassword("");
 		return cartItem;
 	}
 	
@@ -29,6 +30,7 @@ public class CartItemController {
 		List<CartItem> cartItems = cartItemService.findAllCartItems();
 		for (CartItem cartItem : cartItems) {
 			cartItem.getItem().setSeller(null);
+			cartItem.getCustomer().getAccount().setPassword("");
 		}
 		return cartItems;
 	}
@@ -38,6 +40,7 @@ public class CartItemController {
 		List<CartItem> cartItems = cartItemService.findCartItemsByCustomerId(id);
 		for (CartItem cartItem : cartItems) {
 			cartItem.getItem().setSeller(null);
+			cartItem.getCustomer().getAccount().setPassword("");
 		}
 		return cartItems;
 	}
@@ -46,6 +49,7 @@ public class CartItemController {
 	public CartItem updateCartItem(@RequestBody CartItem updatedCartItem) {
 		CartItem cartItem = cartItemService.updateCartItemById(updatedCartItem);
 		cartItem.getItem().setSeller(null);
+		cartItem.getCustomer().getAccount().setPassword("");
 		return cartItem;
 	}
 	
