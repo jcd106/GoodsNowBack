@@ -12,7 +12,7 @@ import com.revature.services.*;
 
 @RestController
 @RequestMapping("/register")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class RegisterController {
 	
 	@Autowired
