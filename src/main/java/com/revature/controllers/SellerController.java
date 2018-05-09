@@ -22,7 +22,9 @@ public class SellerController {
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Seller addSeller(@Valid @RequestBody Seller newSeller) {
 		Seller seller = sellerService.addSeller(newSeller);
-		seller.getAccount().setPassword("");
+		if (seller != null) {
+			seller.getAccount().setPassword("");
+		}
 		return seller;
 	}
 	

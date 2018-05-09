@@ -21,7 +21,9 @@ public class CartItemController {
 	public CartItem addCartItem(@RequestBody CartItem newCartItem) {
 		CartItem cartItem = cartItemService.addCartItem(newCartItem);
 		cartItem.getItem().setSeller(null);
-		cartItem.getCustomer().getAccount().setPassword("");
+		if (cartItem.getCustomer().getAccount() != null) {
+			cartItem.getCustomer().getAccount().setPassword("");
+		}
 		return cartItem;
 	}
 	

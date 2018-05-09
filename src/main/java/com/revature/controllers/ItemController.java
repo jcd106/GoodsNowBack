@@ -20,7 +20,9 @@ public class ItemController {
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Item addItem(@RequestBody Item newItem) {
 		Item item = itemService.addItem(newItem);
-		item.setSeller(null);
+		if (item != null) {
+			item.setSeller(null);
+		}
 		return item;
 	}
 	

@@ -22,7 +22,9 @@ public class AccountController {
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Account addUser(@Valid @RequestBody Account newAccount) {
 		Account account = accountService.addAccount(newAccount);
-		account.setPassword("");
+		if (account != null) {
+			account.setPassword("");
+		}
 		return account;
 	}
 	

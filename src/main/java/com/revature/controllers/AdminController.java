@@ -22,7 +22,11 @@ public class AdminController {
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Admin addAdmin(@Valid @RequestBody Admin newAdmin) {
 		Admin admin = adminService.addAdmin(newAdmin);
-		admin.getAccount().setPassword("");
+		if (admin != null) {
+			if (admin.getAccount() != null) {
+				admin.getAccount().setPassword("");
+			}
+		}
 		return admin;
 	}
 	

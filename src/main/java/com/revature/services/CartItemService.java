@@ -2,7 +2,7 @@ package com.revature.services;
 
 import java.util.List;
 
-import com.revature.models.CartItem;
+import com.revature.models.*;
 
 public interface CartItemService {
 	
@@ -12,5 +12,6 @@ public interface CartItemService {
 	public List<CartItem> findCartItemsByCustomerId(int customerId);
 	public CartItem updateCartItemById(CartItem updatedCartItem);
 	public void deleteCartItem(CartItem deleteCartItem);
+	public Order checkout(Order newOrder);
 
 }

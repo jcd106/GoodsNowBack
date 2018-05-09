@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -8,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import com.revature.models.Customer;
-import com.revature.services.CustomerService;
+import com.revature.models.*;
+import com.revature.services.*;
 
 @RestController
 @RequestMapping("/customers")
@@ -19,11 +20,25 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 	
+	@Autowired
+	CartItemService cartItemService;
+	
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Customer addCustomer(@Valid @RequestBody Customer newCustomer) {
 		Customer customer = customerService.addCustomer(newCustomer);
-		customer.getAccount().setPassword("");
+		if (customer != null) {
+			if (customer.getAccount() != null) {
+				customer.getAccount().setPassword("");
+			}
+		}
 		return customer;
+	}
+	
+	@PostMapping(value="/checkout", produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public Order checkOut(@RequestBody Order order) {
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		order.setSubmitted(timestamp);
+		return cartItemService.checkout(order);
 	}
 	
 	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
