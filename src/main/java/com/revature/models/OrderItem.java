@@ -6,6 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Component
 @Entity
 @Table(name="ORDER_ITEM")
@@ -64,6 +66,7 @@ public class OrderItem {
 		this.resolved = resolved;
 	}
 	
+	@JsonIgnore
 	public Item getItem() {
 		return this.orderItemId.getItem();
 	}
@@ -75,6 +78,7 @@ public class OrderItem {
 		this.orderItemId.setItem(item);
 	}
 	
+	@JsonIgnore
 	public Order getOrder() {
 		return this.orderItemId.getOrder();
 	}
