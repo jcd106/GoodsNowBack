@@ -1,7 +1,6 @@
 package com.revature.controllers;
 
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +9,10 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.revature.models.*;
 import com.revature.services.*;
 
+/**
+ * Controller for registering new users
+ * @author Josh Dughi
+ */
 @RestController
 @RequestMapping("/register")
 @CrossOrigin
@@ -27,6 +30,11 @@ public class RegisterController {
 	@Autowired
 	AdminService adminService;
 	
+	/**
+	 * Add a new Account and its linked Customer to the database
+	 * @param on ObjectNode with an Account and Customer
+	 * @return The Customer after it has been added to the database
+	 */
 	@PostMapping(value="/customer", produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Customer addNewCustomer(@Valid @RequestBody ObjectNode on) {
 		ObjectMapper mapper = new ObjectMapper();
@@ -54,6 +62,11 @@ public class RegisterController {
 		return null;
 	}
 	
+	/**
+	 * Add a new Account and its linked Seller to the database
+	 * @param on ObjectNode with an Account and Seller
+	 * @return The Seller after it has been added to the database
+	 */
 	@PostMapping(value="/seller", produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Seller addNewSeller(@Valid @RequestBody ObjectNode on) {
 		ObjectMapper mapper = new ObjectMapper();
@@ -81,6 +94,11 @@ public class RegisterController {
 		return null;
 	}
 	
+	/**
+	 * Add a new Account and its linked Admin to the database
+	 * @param on ObjectNode with an Account and Admin
+	 * @return The Admin after it has been added to the database
+	 */
 	@PostMapping(value="/admin", produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Admin addNewAdmin(@Valid @RequestBody ObjectNode on) {
 		ObjectMapper mapper = new ObjectMapper();

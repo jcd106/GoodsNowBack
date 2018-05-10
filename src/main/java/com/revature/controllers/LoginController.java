@@ -3,10 +3,13 @@ package com.revature.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
 import com.revature.models.*;
 import com.revature.services.*;
 
+/**
+ * Controller for user login
+ * @author Josh Dughi
+ */
 @RestController
 @RequestMapping("/login")
 @CrossOrigin
@@ -24,6 +27,11 @@ public class LoginController {
 	@Autowired
 	AdminService adminService;
 	
+	/**
+	 * Log in an Account and get its matching customer, seller, or admin
+	 * @param logAccount
+	 * @return The logged in Customer, Seller, or Admin
+	 */
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Object loginAccount(@RequestBody Account logAccount) {
 		Account account = accountService.loginAccount(logAccount);
