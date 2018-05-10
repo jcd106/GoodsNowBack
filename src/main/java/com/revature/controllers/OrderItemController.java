@@ -1,13 +1,11 @@
 package com.revature.controllers;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import com.revature.models.OrderItem;
-import com.revature.services.OrderItemService;
+import com.revature.models.*;
+import com.revature.services.*;
 
 @RestController
 @RequestMapping(value="/orderitems")
@@ -16,6 +14,12 @@ public class OrderItemController {
 	
 	@Autowired
 	OrderItemService orderItemService;
+	
+	@Autowired
+	OrderService orderService;
+	
+	@Autowired
+	ItemService itemService;
 	
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public OrderItem addOrderItem(@RequestBody OrderItem newOrderItem) {
@@ -59,6 +63,10 @@ public class OrderItemController {
 	
 	@PutMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public OrderItem updateOrderItem(@RequestBody OrderItem updatedOrderItem) {
+		Order order = orderService.findOrderById(updatedOrderItem.getOrder().getOrderId());
+		updatedOrderItem.setOrder(order);
+		Item item = itemService.findItemById(updatedOrderItem.getItem().getItemId());
+		updatedOrderItem.setItem(item);
 		OrderItem orderItem = orderItemService.updateOrderItem(updatedOrderItem);
 		orderItem.getItem().setSeller(null);
 		orderItem.getOrder().getCustomer().getAccount().setPassword("");

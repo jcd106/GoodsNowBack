@@ -11,7 +11,19 @@ import com.revature.models.Account;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Integer> {
 	
+	/**
+	 * Find the account by username
+	 * @param username
+	 * @return Account with matching username
+	 */
 	public Account findAccountByUsername(String username);
+	
+	/**
+	 * Find the account by username and password
+	 * @param username
+	 * @param password
+	 * @return Account with matching username and password
+	 */
 	public Account findAccountByUsernameAndPassword(String username, String password);	
 
 }

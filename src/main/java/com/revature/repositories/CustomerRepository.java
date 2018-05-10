@@ -12,7 +12,18 @@ import com.revature.models.*;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
+	/**
+	 * Find customer by email
+	 * @param email
+	 * @return Customer with matching email
+	 */
 	public Customer findCustomerByEmail(String email);
+	
+	/**
+	 * Find customer by account
+	 * @param account
+	 * @return Customer with matching Account
+	 */
 	public Customer findCustomerByAccount(Account account);
 	
 }

@@ -12,11 +12,17 @@ import com.revature.models.*;
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
 	
 	/**
-	 * Find the Admin
+	 * Find the admin by email
 	 * @param email
-	 * @return
+	 * @return Admin with matching email
 	 */
 	public Admin findAdminByEmail(String email);
+	
+	/**
+	 * Find admin by account
+	 * @param account
+	 * @return Admin with matching Account
+	 */
 	public Admin findAdminByAccount(Account account);
 
 }

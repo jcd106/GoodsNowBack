@@ -1,15 +1,16 @@
 package com.revature.services;
 
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.revature.models.*;
 import com.revature.repositories.*;
 
+/**
+ * Impmlementation for AdminService
+ * @author Zach Vaughn
+ */
 @Service
 @Transactional
 public class AdminServiceImpl implements AdminService {
