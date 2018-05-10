@@ -4,9 +4,12 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * Model for Sellers in the database
+ * @author Josh Dughi
+ */
 @Component
 @Entity
 @Table(name="SELLER")
@@ -51,10 +54,25 @@ public class Seller {
 	@OneToMany(mappedBy = "seller", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Item> items;
 
+	/**
+	 * Default constructor
+	 */
 	public Seller() {
 		super();
 	}
 
+	/**
+	 * Constructor setting all fields
+	 * @param sellerId
+	 * @param account
+	 * @param email
+	 * @param name
+	 * @param address
+	 * @param city
+	 * @param state
+	 * @param zipcode
+	 * @param money
+	 */
 	public Seller(int sellerId, Account account, String email, String name, String address, String city, String state,
 			String zipcode, double money) {
 		super();
@@ -69,83 +87,153 @@ public class Seller {
 		this.money = money;
 	}
 
+	/**
+	 * @return this.sellerId
+	 */
 	public int getSellerId() {
 		return sellerId;
 	}
 
+	/**
+	 * Set this.sellerId
+	 * @param sellerId
+	 */
 	public void setSellerId(int sellerId) {
 		this.sellerId = sellerId;
 	}
 
+	/**
+	 * @return this.account
+	 */
 	public Account getAccount() {
 		return account;
 	}
 
+	/**
+	 * Set this.account
+	 * @param account
+	 */
 	public void setAccount(Account account) {
 		this.account = account;
 	}
 
+	/**
+	 * @return this.email
+	 */
 	public String getEmail() {
 		return email;
 	}
 
+	/**
+	 * Set this.email
+	 * @param email
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	/**
+	 * @return this.name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Set this.name
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * @return this.address
+	 */
 	public String getAddress() {
 		return address;
 	}
 
+	/**
+	 * Set this.address
+	 * @param address
+	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
+	/**
+	 * @return this.city
+	 */
 	public String getCity() {
 		return city;
 	}
 
+	/**
+	 * Set this.city
+	 * @param city
+	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 
+	/**
+	 * @return this.state
+	 */
 	public String getState() {
 		return state;
 	}
 
+	/**
+	 * Set this.state
+	 * @param state
+	 */
 	public void setState(String state) {
 		this.state = state;
 	}
 
+	/**
+	 * @return this.zipcode
+	 */
 	public String getZipcode() {
 		return zipcode;
 	}
 
+	/**
+	 * Set this.zipcode
+	 * @param zipcode
+	 */
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
 
+	/**
+	 * @return the Items associated with this Seller
+	 */
 	@JsonIgnore
 	public List<Item> getItems() {
 		return items;
 	}
 
+	/**
+	 * Set this.items
+	 * @param items
+	 */
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
 
+	/**
+	 * @return the money owed to this Seller
+	 */
 	public double getMoney() {
 		return money;
 	}
 
+	/**
+	 * Set the money owed to this Seller
+	 * @param money
+	 */
 	public void setMoney(double money) {
 		this.money = money;
 	}

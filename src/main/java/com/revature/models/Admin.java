@@ -4,6 +4,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
 
+/**
+ * Model for Admins in the database
+ * @author Josh Dughi
+ */
 @Component
 @Entity
 @Table(name="ADMIN")
@@ -30,10 +34,20 @@ public class Admin {
 	@NotNull
 	private String lastName;
 
+	/**
+	 * Default constructor
+	 */
 	public Admin() {
 		super();
 	}
 
+	/**
+	 * Constructor to set values in a new Admin instance, minus the customerId
+	 * @param account
+	 * @param email
+	 * @param firstName
+	 * @param lastName
+	 */
 	public Admin(Account account, String email, String firstName, String lastName) {
 		super();
 		this.account = account;
@@ -42,42 +56,77 @@ public class Admin {
 		this.lastName = lastName;
 	}
 
+	/**
+	 * @return this.adminId
+	 */
 	public int getAdminId() {
 		return adminId;
 	}
 
+	/**
+	 * Set this.adminId
+	 * @param adminId
+	 */
 	public void setAdminId(int adminId) {
 		this.adminId = adminId;
 	}
 
+	/**
+	 * @return this.account
+	 */
 	public Account getAccount() {
 		return account;
 	}
 
+	/**
+	 * Set this.account
+	 * @param account
+	 */
 	public void setAccount(Account account) {
 		this.account = account;
 	}
 
+	/**
+	 * @return this.email
+	 */
 	public String getEmail() {
 		return email;
 	}
 
+	/**
+	 * Set this.email
+	 * @param email
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	/**
+	 * @return this.firstName
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
 
+	/**
+	 * Set this.firstName
+	 * @param firstName
+	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
+	/**
+	 * @return this.lastName
+	 */
 	public String getLastName() {
 		return lastName;
 	}
 
+	/**
+	 * Set this.lastName
+	 * @param lastName
+	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}

@@ -3,6 +3,11 @@ package com.revature.models;
 import java.io.Serializable;
 import javax.persistence.*;
 
+/**
+ * Model for EmbeddedId in OrderItems
+ * @author Josh Dughi
+ *
+ */
 @Embeddable
 public class OrderItemId implements Serializable {
 
@@ -16,28 +21,50 @@ public class OrderItemId implements Serializable {
 	@JoinColumn(name="ORDER_ID")
 	private Order order;
 
+	/**
+	 * Default constructor
+	 */
 	public OrderItemId() {
 		super();
 	}
 
+	/**
+	 * Constructor setting the fields
+	 * @param item
+	 * @param order
+	 */
 	public OrderItemId(Item item, Order order) {
 		super();
 		this.item = item;
 		this.order = order;
 	}
 
+	/**
+	 * @return this.item
+	 */
 	public Item getItem() {
 		return item;
 	}
 
+	/**
+	 * Set this.item
+	 * @param item
+	 */
 	public void setItem(Item item) {
 		this.item = item;
 	}
 
+	/**
+	 * @return this.order
+	 */
 	public Order getOrder() {
 		return order;
 	}
 
+	/**
+	 * Set this.order
+	 * @param order
+	 */
 	public void setOrder(Order order) {
 		this.order = order;
 	}

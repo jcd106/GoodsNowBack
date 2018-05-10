@@ -23,6 +23,9 @@ public class CustomerController {
 	@Autowired
 	CartItemService cartItemService;
 	
+	@Autowired
+	AccountService accountService;
+	
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Customer addCustomer(@Valid @RequestBody Customer newCustomer) {
 		Customer customer = customerService.addCustomer(newCustomer);
@@ -59,6 +62,8 @@ public class CustomerController {
 	
 	@PutMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Customer updateCustomer(@RequestBody Customer updatedCustomer) {
+		Account account = accountService.findAccountById(updatedCustomer.getAccount().getAccountId());
+		updatedCustomer.setAccount(account);
 		Customer customer = customerService.updateCustomerById(updatedCustomer);
 		customer.getAccount().setPassword("");
 		return customer;

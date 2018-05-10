@@ -1,15 +1,12 @@
 package com.revature.controllers;
 
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import com.revature.models.Admin;
-import com.revature.services.AdminService;
+import com.revature.models.*;
+import com.revature.services.*;
 
 @RestController
 @RequestMapping("/admins")
@@ -18,6 +15,9 @@ public class AdminController {
 	
 	@Autowired
 	AdminService adminService;
+	
+	@Autowired
+	AccountService accountService;
 	
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Admin addAdmin(@Valid @RequestBody Admin newAdmin) {
@@ -48,6 +48,8 @@ public class AdminController {
 	
 	@PutMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Admin updateAdmin(@RequestBody Admin updatedAdmin) {
+		Account account = accountService.findAccountById(updatedAdmin.getAccount().getAccountId());
+		updatedAdmin.setAccount(account);
 		Admin admin = adminService.updateAdminById(updatedAdmin);
 		admin.getAccount().setPassword("");
 		return admin;

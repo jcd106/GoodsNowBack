@@ -3,9 +3,12 @@ package com.revature.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
 import org.springframework.stereotype.Component;
 
+/**
+ * Model for Accounts in the database
+ * @author Josh Dughi
+ */
 @Component
 @Entity
 @Table(name="ACCOUNT")
@@ -31,10 +34,20 @@ public class Account {
 	@NotNull
 	private int roleId;
 	
+	/**
+	 * Default constructor
+	 */
 	public Account() {
 		super();
 	}
 
+	/**
+	 * Constructor to set all values in a new Account instance
+	 * @param accountId
+	 * @param username
+	 * @param password
+	 * @param roleId
+	 */
 	public Account(int accountId, String username, String password, int roleId) {
 		super();
 		this.accountId = accountId;
@@ -43,34 +56,62 @@ public class Account {
 		this.roleId = roleId;
 	}
 	
+	/**
+	 * @return this.accountId
+	 */
 	public int getAccountId() {
 		return accountId;
 	}
 	
+	/**
+	 * Set this.accountId
+	 * @param accountId
+	 */
 	public void setAccountId(int accountId) {
 		this.accountId = accountId;
 	}
 	
+	/**
+	 * @return this.username
+	 */
 	public String getUsername() {
 		return username;
 	}
 	
+	/**
+	 * Set this.username
+	 * @param username
+	 */
 	public void setUsername(String username) {
 		this.username = username;
 	}
 	
+	/**
+	 * @return this.password
+	 */
 	public String getPassword() {
 		return password;
 	}
 	
+	/**
+	 * Set this.password
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 	
+	/**
+	 * @return this.roleId
+	 */
 	public int getRoleId() {
 		return roleId;
 	}
 	
+	/**
+	 * Set this.roleId
+	 * @param roleId
+	 */
 	public void setRoleId(int roleId) {
 		this.roleId = roleId;
 	}

@@ -5,6 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import com.revature.models.*;
 
+/**
+ * Interface for getting Customer information from the database
+ * @author Zach Vaughn
+ */
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 

@@ -4,6 +4,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
 
+/**
+ * Model for Customers in the database
+ * @author Josh Dughi
+ */
 @Component
 @Entity
 @Table(name="CUSTOMER")
@@ -30,10 +34,20 @@ public class Customer {
 	@NotNull
 	private String lastName;
 
+	/**
+	 * Default constructor
+	 */
 	public Customer() {
 		super();
 	}
 
+	/**
+	 * Constructor setting all values minus the customerId
+	 * @param account
+	 * @param email
+	 * @param firstName
+	 * @param lastName
+	 */
 	public Customer(Account account, String email, String firstName, String lastName) {
 		super();
 		this.account = account;
@@ -42,6 +56,14 @@ public class Customer {
 		this.lastName = lastName;
 	}
 
+	/**
+	 * Constructor setting all fields
+	 * @param customerId
+	 * @param account
+	 * @param email
+	 * @param firstName
+	 * @param lastName
+	 */
 	public Customer(int customerId, Account account, String email, String firstName, String lastName) {
 		super();
 		this.customerId = customerId;
@@ -51,42 +73,77 @@ public class Customer {
 		this.lastName = lastName;
 	}
 
+	/**
+	 * @return this.customerId
+	 */
 	public int getCustomerId() {
 		return customerId;
 	}
 
+	/**
+	 * Set this.customerId
+	 * @param customerId
+	 */
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
 
+	/**
+	 * @return this.account
+	 */
 	public Account getAccount() {
 		return account;
 	}
 
+	/**
+	 * Set this.account
+	 * @param account
+	 */
 	public void setAccount(Account account) {
 		this.account = account;
 	}
 
+	/**
+	 * @return this.email
+	 */
 	public String getEmail() {
 		return email;
 	}
 
+	/**
+	 * Set this.email
+	 * @param email
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	/**
+	 * @return this.firstName
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
 
+	/**
+	 * Set this.firstName
+	 * @param firstName
+	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
+	/**
+	 * @return this.lastName
+	 */
 	public String getLastName() {
 		return lastName;
 	}
 
+	/**
+	 * Set this.lastName
+	 * @param lastName
+	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}

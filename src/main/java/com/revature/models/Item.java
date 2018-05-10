@@ -4,6 +4,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
 
+/**
+ * Model for Items in the database
+ * @author Josh Dughi
+ *
+ */
 @Component
 @Entity
 @Table(name="ITEM")
@@ -36,10 +41,23 @@ public class Item {
 	@Column(name="CATEGORY")
 	private String category;
 
+	/**
+	 * Default constructor
+	 */
 	public Item() {
 		super();
 	}
 
+	/**
+	 * Constructor setting all the fields
+	 * @param itemId
+	 * @param itemName
+	 * @param description
+	 * @param seller
+	 * @param price
+	 * @param image
+	 * @param category
+	 */
 	public Item(int itemId, String itemName, String description, Seller seller, double price, String image,
 			String category) {
 		super();
@@ -52,58 +70,107 @@ public class Item {
 		this.category = category;
 	}
 
+	/**
+	 * @return this.itemId
+	 */
 	public int getItemId() {
 		return itemId;
 	}
 
+	/**
+	 * Set this.itemId
+	 * @param itemId
+	 */
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
 	}
 
+	/**
+	 * @return this.itemName
+	 */
 	public String getItemName() {
 		return itemName;
 	}
 
+	/**
+	 * Set this.itemName
+	 * @param itemName
+	 */
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
 
+	/**
+	 * @return this.description
+	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * Set this.description
+	 * @param description
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/**
+	 * @return this.seller
+	 */
 	public Seller getSeller() {
 		return seller;
 	}
 
+	/**
+	 * Set this.seller
+	 * @param seller
+	 */
 	public void setSeller(Seller seller) {
 		this.seller = seller;
 	}
 
+	/**
+	 * @return this.price
+	 */
 	public double getPrice() {
 		return price;
 	}
 
+	/**
+	 * Set this.price
+	 * @param price
+	 */
 	public void setPrice(double price) {
 		this.price = price;
 	}
 
+	/**
+	 * @return this.image
+	 */
 	public String getImage() {
 		return image;
 	}
 
+	/**
+	 * Set this.image
+	 * @param image
+	 */
 	public void setImage(String image) {
 		this.image = image;
 	}
 
+	/**
+	 * @return this.category
+	 */
 	public String getCategory() {
 		return category;
 	}
 
+	/**
+	 * Set this.category
+	 * @param category
+	 */
 	public void setCategory(String category) {
 		this.category = category;
 	}

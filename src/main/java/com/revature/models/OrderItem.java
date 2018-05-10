@@ -1,13 +1,16 @@
 package com.revature.models;
 
 import java.sql.Timestamp;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * Model for OrderItems in the database
+ * @author Josh Dughi
+ *
+ */
 @Component
 @Entity
 @Table(name="ORDER_ITEM")
@@ -23,10 +26,20 @@ public class OrderItem {
 	@Column(name="RESOLVED")
 	private Timestamp resolved;
 
+	/**
+	 * Default constructor
+	 */
 	public OrderItem() {
 		super();
 	}
 	
+	/**
+	 * Constructor for OrderItem that creates a new OrderItemId
+	 * @param item
+	 * @param order
+	 * @param quantity
+	 * @param resolved
+	 */
 	public OrderItem(Item item, Order order, int quantity, Timestamp resolved) {
 		super();
 		OrderItemId oiId = new OrderItemId(item, order);
@@ -35,6 +48,12 @@ public class OrderItem {
 		this.resolved = resolved;
 	}
 
+	/**
+	 * Constructor for OrderItem using an instance of an OrderItemId
+	 * @param orderItemId
+	 * @param quantity
+	 * @param resolved
+	 */
 	public OrderItem(OrderItemId orderItemId, int quantity, Timestamp resolved) {
 		super();
 		this.orderItemId = orderItemId;
@@ -42,35 +61,63 @@ public class OrderItem {
 		this.resolved = resolved;
 	}
 
+	/**
+	 * @return this.orderItemId
+	 */
 	public OrderItemId getOrderItemId() {
 		return orderItemId;
 	}
 
+	/**
+	 * Set this.orderItemId
+	 * @param orderItemId
+	 */
 	public void setOrderItemId(OrderItemId orderItemId) {
 		this.orderItemId = orderItemId;
 	}
 
+	/**
+	 * @return this.quantity
+	 */
 	public int getQuantity() {
 		return quantity;
 	}
 
+	/**
+	 * Set this.quantity
+	 * @param quantity
+	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
+	/**
+	 * @return this.resolved
+	 */
 	public Timestamp getResolved() {
 		return resolved;
 	}
 
+	/**
+	 * Set this.resolved
+	 * @param resolved
+	 */
 	public void setResolved(Timestamp resolved) {
 		this.resolved = resolved;
 	}
 	
+	/**
+	 * @return the Item associated with this.orderItemId
+	 */
 	@JsonIgnore
 	public Item getItem() {
 		return this.orderItemId.getItem();
 	}
 	
+	/**
+	 * Set the Item associated with this.orderItemId
+	 * @param item
+	 */
 	public void setItem(Item item) {
 		if(this.orderItemId == null) {
 			this.orderItemId = new OrderItemId();
@@ -78,11 +125,18 @@ public class OrderItem {
 		this.orderItemId.setItem(item);
 	}
 	
+	/**
+	 * @return the Order associated with this.orderItemId
+	 */
 	@JsonIgnore
 	public Order getOrder() {
 		return this.orderItemId.getOrder();
 	}
 	
+	/**
+	 * Set the Order associated with this.orderItemId
+	 * @param order
+	 */
 	public void setOrder(Order order) {
 		if(this.orderItemId == null) {
 			this.orderItemId = new OrderItemId();

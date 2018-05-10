@@ -3,6 +3,10 @@ package com.revature.models;
 import java.io.Serializable;
 import javax.persistence.*;
 
+/**
+ * Model for the EmbeddedId in CartItems
+ * @author Josh Dughi
+ */
 @Embeddable
 public class CartItemId implements Serializable {
 
@@ -16,28 +20,50 @@ public class CartItemId implements Serializable {
 	@JoinColumn(name="CUSTOMER_ID")
 	private Customer customer;
 
+	/**
+	 * Default constructor
+	 */
 	public CartItemId() {
 		super();
 	}
 
+	/**
+	 * Constructor setting the fields
+	 * @param item
+	 * @param customer
+	 */
 	public CartItemId(Item item, Customer customer) {
 		super();
 		this.item = item;
 		this.customer = customer;
 	}
 
+	/**
+	 * @return this.item
+	 */
 	public Item getItem() {
 		return item;
 	}
 
+	/**
+	 * Set this.item
+	 * @param item
+	 */
 	public void setItem(Item item) {
 		this.item = item;
 	}
 
+	/**
+	 * @return this.customer
+	 */
 	public Customer getCustomer() {
 		return customer;
 	}
 
+	/**
+	 * Set this.customer
+	 * @param customer
+	 */
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
